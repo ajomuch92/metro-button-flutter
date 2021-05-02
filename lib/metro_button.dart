@@ -2,6 +2,7 @@ library metro_button;
 
 import 'package:flutter/material.dart';
 
+/// Class used to generate the command button
 class CommandButton extends StatelessWidget {
   final Widget title;
   final Widget subtitle;
@@ -19,22 +20,24 @@ class CommandButton extends StatelessWidget {
   final double fontSize;
   final Widget icon;
 
-  const CommandButton({Key key, @required this.title,
-    @required this.tap,
-    this.longTap,
-    this.tooltip,
-    this.subtitle,
-    this.disabled = false,
-    this.width,
-    this.height,
-    this.reverse = false,
-    this.backgroundColor,
-    this.borderColor,
-    this.radius = 5.0,
-    this.textColor,
-    this.fontSize,
-    this.icon
-    }) : super(key: key);
+  const CommandButton(
+      {Key key,
+      @required this.title,
+      @required this.tap,
+      this.longTap,
+      this.tooltip,
+      this.subtitle,
+      this.disabled = false,
+      this.width,
+      this.height,
+      this.reverse = false,
+      this.backgroundColor,
+      this.borderColor,
+      this.radius = 5.0,
+      this.textColor,
+      this.fontSize,
+      this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,34 +47,36 @@ class CommandButton extends StatelessWidget {
         height: this.height ?? 80.0,
         child: RaisedButton(
           child: Tooltip(
-            message: this.tooltip??'',
-            child: this.reverse? 
-            ListTile(
-              title: this.title,
-              subtitle: this.subtitle,
-              trailing: this.icon,
-            ):
-            ListTile(
-              title: this.title,
-              subtitle: this.subtitle,
-              leading: this.icon,
-            )
-          ),
-          onPressed: disabled? null: tap,
+              message: this.tooltip ?? '',
+              child: this.reverse
+                  ? ListTile(
+                      title: this.title,
+                      subtitle: this.subtitle,
+                      trailing: this.icon,
+                    )
+                  : ListTile(
+                      title: this.title,
+                      subtitle: this.subtitle,
+                      leading: this.icon,
+                    )),
+          onPressed: disabled ? null : tap,
           onLongPress: this.longTap,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius??0),
-            side: BorderSide(color: disabled? Colors.grey[300]: borderColor??Colors.grey)
-          ),
-          color: disabled? Colors.grey[300]: backgroundColor??Colors.grey,
+              borderRadius: BorderRadius.circular(radius ?? 0),
+              side: BorderSide(
+                  color: disabled
+                      ? Colors.grey[300]
+                      : borderColor ?? Colors.grey)),
+          color: disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey,
           padding: const EdgeInsets.all(8.0),
-          highlightColor: Colors.grey[50],      
+          highlightColor: Colors.grey[50],
         ),
       ),
     );
   }
 }
 
+/// Class used to generate the shortcut button
 class ShortcutButton extends StatelessWidget {
   final Widget title;
   final Widget badge;
@@ -87,20 +92,22 @@ class ShortcutButton extends StatelessWidget {
   final double fontSize;
   final Widget icon;
 
-  const ShortcutButton({Key key, @required this.title,
-    @required this.tap,
-    this.longTap,
-    this.badge,
-    this.tooltip,
-    this.disabled = false,
-    this.size,
-    this.backgroundColor,
-    this.borderColor,
-    this.radius = 5.0,
-    this.textColor,
-    this.fontSize,
-    this.icon
-    }) : super(key: key);
+  const ShortcutButton(
+      {Key key,
+      @required this.title,
+      @required this.tap,
+      this.longTap,
+      this.badge,
+      this.tooltip,
+      this.disabled = false,
+      this.size,
+      this.backgroundColor,
+      this.borderColor,
+      this.radius = 5.0,
+      this.textColor,
+      this.fontSize,
+      this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,44 +116,39 @@ class ShortcutButton extends StatelessWidget {
       height: this.size ?? 150,
       child: RaisedButton(
         child: Tooltip(
-          message: this.tooltip??'',
-          child: Stack(
-            children: [
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    this.icon,
-                    this.title
-                  ],
+            message: this.tooltip ?? '',
+            child: Stack(
+              children: [
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [this.icon, this.title],
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 0.0,
-                right: 0.0,
-                child: this.badge != null? 
-                  Container(
-                    padding: EdgeInsets.all(1.0),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(3)
-                    ),
-                    child: this.badge,
-                  ):
-                  Container()
-              ),
-            ],
-          )
-        ),
-        onPressed: disabled? null: tap,
+                Positioned(
+                    top: 0.0,
+                    right: 0.0,
+                    child: this.badge != null
+                        ? Container(
+                            padding: EdgeInsets.all(1.0),
+                            decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(3)),
+                            child: this.badge,
+                          )
+                        : Container()),
+              ],
+            )),
+        onPressed: disabled ? null : tap,
         onLongPress: this.longTap,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius??0),
-          side: BorderSide(color: disabled? Colors.grey[300]: borderColor??Colors.grey)
-        ),
-        color: disabled? Colors.grey[300]: backgroundColor??Colors.grey,
+            borderRadius: BorderRadius.circular(radius ?? 0),
+            side: BorderSide(
+                color:
+                    disabled ? Colors.grey[300] : borderColor ?? Colors.grey)),
+        color: disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey,
         padding: const EdgeInsets.all(8.0),
-        highlightColor: Colors.grey[50],      
+        highlightColor: Colors.grey[50],
       ),
     );
   }
