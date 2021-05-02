@@ -1,14 +1,28 @@
-# metro_button
+# Metro Buttons
 
-A new Flutter package project.
+This package includes 2 types of buttons (CommandButton and ShortcutButton) inspired by [Metro UI](https://metroui.org.ua/buttons.html).
 
-## Getting Started
+## Instalation
+Include `metro_button` in your `pubspec.yaml` file:
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  metro_button: version
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Usage
+
+To use this package, just import it into your file and enjoy it.
+
+```dart
+import 'package:metro_button/metro_button.dart';
+
+...
+
+CommandButton(title: Text('Title'), tap: (){},)
+ShortcutButton(title: Text('Title'), tap: (){}, Icon(Icons.home))
+
+```
+
