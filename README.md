@@ -44,7 +44,8 @@ This widget allow to generate a button with an icon
 | disabled  | Boolean value to disabled button | False   |  False |
 | reverse  | Boolean value to indicate when icon is used as leading or trailing | False   |  False |
 | width  | Double value to indicate button width | False   |   |
-| height  | Double value to indicate button heigh | False   |   |
+| height  | Double value to indicate button height | False   |   |
+| elevation  | Double value to indicate button elevation | False   |  0 |
 | radius  | Double value to indicate button corner radius | False   |  5.0 |
 | backgroundColor  | Color to indicate button background color | False   |   |
 | borderColor  | Color to indicate button border color | False   |   |
@@ -64,6 +65,7 @@ This widget allow to generate a square button with an icon and badge
 | tooltip  | String to use as a help tooltip | False   |   |
 | disabled  | Boolean value to disabled button | False   |  False |
 | size  | Double value to indicate button width and height | False   |   |
+| elevation  | Double value to indicate button elevation | False   |  0 |
 | radius  | Double value to indicate button corner radius | False   |  5.0 |
 | backgroundColor  | Color to indicate button background color | False   |   |
 | borderColor  | Color to indicate button border color | False   |   |
