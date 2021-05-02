@@ -7,24 +7,22 @@ class CommandButton extends StatelessWidget {
   final Widget title;
   final Widget subtitle;
   final String tooltip;
-  final Function() tap;
-  final Function() longTap;
+  final Function() onTap;
+  final Function() onLongTap;
   final bool disabled;
   final bool reverse;
   final double width;
   final double height;
   final Color backgroundColor;
   final Color borderColor;
-  final Color textColor;
   final double radius;
-  final double fontSize;
   final Widget icon;
 
   const CommandButton(
       {Key key,
       @required this.title,
-      @required this.tap,
-      this.longTap,
+      @required this.onTap,
+      this.onLongTap,
       this.tooltip,
       this.subtitle,
       this.disabled = false,
@@ -34,8 +32,6 @@ class CommandButton extends StatelessWidget {
       this.backgroundColor,
       this.borderColor,
       this.radius = 5.0,
-      this.textColor,
-      this.fontSize,
       this.icon})
       : super(key: key);
 
@@ -59,8 +55,8 @@ class CommandButton extends StatelessWidget {
                       subtitle: this.subtitle,
                       leading: this.icon,
                     )),
-          onPressed: disabled ? null : tap,
-          onLongPress: this.longTap,
+          onPressed: disabled ? null : this.onTap,
+          onLongPress: this.onLongTap,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius ?? 0),
               side: BorderSide(
@@ -81,22 +77,20 @@ class ShortcutButton extends StatelessWidget {
   final Widget title;
   final Widget badge;
   final String tooltip;
-  final Function() tap;
-  final Function() longTap;
+  final Function() onTap;
+  final Function() onLongTap;
   final bool disabled;
   final double size;
   final Color backgroundColor;
   final Color borderColor;
-  final Color textColor;
   final double radius;
-  final double fontSize;
   final Widget icon;
 
   const ShortcutButton(
       {Key key,
       @required this.title,
-      @required this.tap,
-      this.longTap,
+      @required this.onTap,
+      this.onLongTap,
       this.badge,
       this.tooltip,
       this.disabled = false,
@@ -104,8 +98,6 @@ class ShortcutButton extends StatelessWidget {
       this.backgroundColor,
       this.borderColor,
       this.radius = 5.0,
-      this.textColor,
-      this.fontSize,
       this.icon})
       : super(key: key);
 
@@ -139,8 +131,8 @@ class ShortcutButton extends StatelessWidget {
                         : Container()),
               ],
             )),
-        onPressed: disabled ? null : tap,
-        onLongPress: this.longTap,
+        onPressed: disabled ? null : this.onTap,
+        onLongPress: this.onLongTap,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius ?? 0),
             side: BorderSide(
