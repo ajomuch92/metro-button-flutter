@@ -71,42 +71,38 @@ class CommandButton extends StatelessWidget {
       child: ButtonTheme(
         height: this.height ?? 80.0,
         child: ElevatedButton(
-          child: Tooltip(
-              message: this.tooltip ?? '',
-              child: this.reverse
-                  ? ListTile(
-                      title: this.title,
-                      subtitle: this.subtitle,
-                      trailing: this.icon,
-                    )
-                  : ListTile(
-                      title: this.title,
-                      subtitle: this.subtitle,
-                      leading: this.icon,
-                    )),
-          onPressed: disabled ? null : this.onTap,
-          onLongPress: this.onLongTap,
-          style: ButtonStyle(
-            side: MaterialStateProperty.all<BorderSide>(
-              BorderSide( color: disabled ? Colors.grey[300]
-                    : borderColor ?? Colors.grey)
-            ),
-            elevation: MaterialStateProperty.all<double>(this.elevation),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius ?? 0)),
-            ),
-            backgroundColor: MaterialStateProperty.all<Color>(
-              disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey
-            ),
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.all(8.0)
-            ),
-            overlayColor: MaterialStateProperty.all<Color>(
-              Colors.grey[50]
-            )
-          )
-        ),
+            child: Tooltip(
+                message: this.tooltip ?? '',
+                child: this.reverse
+                    ? ListTile(
+                        title: this.title,
+                        subtitle: this.subtitle,
+                        trailing: this.icon,
+                      )
+                    : ListTile(
+                        title: this.title,
+                        subtitle: this.subtitle,
+                        leading: this.icon,
+                      )),
+            onPressed: disabled ? null : this.onTap,
+            onLongPress: this.onLongTap,
+            style: ButtonStyle(
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(
+                    color: disabled
+                        ? Colors.grey[300]
+                        : borderColor ?? Colors.grey)),
+                elevation: MaterialStateProperty.all<double>(this.elevation),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(radius ?? 0)),
+                ),
+                backgroundColor: MaterialStateProperty.all<Color>(disabled
+                    ? Colors.grey[300]
+                    : backgroundColor ?? Colors.grey),
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    EdgeInsets.all(8.0)),
+                overlayColor:
+                    MaterialStateProperty.all<Color>(Colors.grey[50]))),
       ),
     );
   }
@@ -172,53 +168,47 @@ class ShortcutButton extends StatelessWidget {
       width: this.size ?? 150,
       height: this.size ?? 150,
       child: ElevatedButton(
-        child: Tooltip(
-            message: this.tooltip ?? '',
-            child: Stack(
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [this.icon, this.title],
+          child: Tooltip(
+              message: this.tooltip ?? '',
+              child: Stack(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [this.icon, this.title],
+                    ),
                   ),
-                ),
-                Positioned(
-                    top: 0.0,
-                    right: 0.0,
-                    child: this.badge != null
-                        ? Container(
-                            padding: EdgeInsets.all(1.0),
-                            decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: this.badge,
-                          )
-                        : Container()),
-              ],
-            )),
-        onPressed: disabled ? null : this.onTap,
-        onLongPress: this.onLongTap,
-        style: ButtonStyle(
-          side: MaterialStateProperty.all<BorderSide>(
-            BorderSide( color: disabled ? Colors.grey[300]
-                  : borderColor ?? Colors.grey)
-          ),
-          elevation: MaterialStateProperty.all<double>(this.elevation),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 0)),
-          ),
-          backgroundColor: MaterialStateProperty.all<Color>(
-            disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey
-          ),
-          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-            EdgeInsets.all(8.0)
-          ),
-          overlayColor: MaterialStateProperty.all<Color>(
-            Colors.grey[50]
-          )
-        )
-      ),
+                  Positioned(
+                      top: 0.0,
+                      right: 0.0,
+                      child: this.badge != null
+                          ? Container(
+                              padding: EdgeInsets.all(1.0),
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(3)),
+                              child: this.badge,
+                            )
+                          : Container()),
+                ],
+              )),
+          onPressed: disabled ? null : this.onTap,
+          onLongPress: this.onLongTap,
+          style: ButtonStyle(
+              side: MaterialStateProperty.all<BorderSide>(BorderSide(
+                  color: disabled
+                      ? Colors.grey[300]
+                      : borderColor ?? Colors.grey)),
+              elevation: MaterialStateProperty.all<double>(this.elevation),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(radius ?? 0)),
+              ),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey),
+              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                  EdgeInsets.all(8.0)),
+              overlayColor: MaterialStateProperty.all<Color>(Colors.grey[50]))),
     );
   }
 }
