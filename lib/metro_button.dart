@@ -4,18 +4,46 @@ import 'package:flutter/material.dart';
 
 /// Class used to generate the command button
 class CommandButton extends StatelessWidget {
+  /// Widget for title
   final Widget title;
+
+  /// Widget for subtitle
   final Widget subtitle;
+
+  /// String for tooltip
   final String tooltip;
+
+  /// Function to handle on tap
   final Function() onTap;
+
+  /// Function to handle on long tap
   final Function() onLongTap;
+
+  /// Boolean to disabled the button
   final bool disabled;
+
+  /// Boolean value to indicate when icon is used as leading or trailing
   final bool reverse;
+
+  /// Double value to indicate button width
   final double width;
+
+  /// Double value to indicate button height
   final double height;
+
+  /// Double value to indicate elevation
+  final double elevation;
+
+  /// Color to indicate button background color
   final Color backgroundColor;
+
+  /// Color to indicate button border color
   final Color borderColor;
+
+  /// Double value to indicate button corner radius
   final double radius;
+
+  /// Widget for icon
   final Widget icon;
 
   const CommandButton(
@@ -28,6 +56,7 @@ class CommandButton extends StatelessWidget {
       this.disabled = false,
       this.width,
       this.height,
+      this.elevation = 0,
       this.reverse = false,
       this.backgroundColor,
       this.borderColor,
@@ -41,7 +70,7 @@ class CommandButton extends StatelessWidget {
       width: this.width ?? MediaQuery.of(context).size.width * 0.9,
       child: ButtonTheme(
         height: this.height ?? 80.0,
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Tooltip(
               message: this.tooltip ?? '',
               child: this.reverse
@@ -57,15 +86,26 @@ class CommandButton extends StatelessWidget {
                     )),
           onPressed: disabled ? null : this.onTap,
           onLongPress: this.onLongTap,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius ?? 0),
-              side: BorderSide(
-                  color: disabled
-                      ? Colors.grey[300]
-                      : borderColor ?? Colors.grey)),
-          color: disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey,
-          padding: const EdgeInsets.all(8.0),
-          highlightColor: Colors.grey[50],
+          style: ButtonStyle(
+            side: MaterialStateProperty.all<BorderSide>(
+              BorderSide( color: disabled ? Colors.grey[300]
+                    : borderColor ?? Colors.grey)
+            ),
+            elevation: MaterialStateProperty.all<double>(this.elevation),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(radius ?? 0)),
+            ),
+            backgroundColor: MaterialStateProperty.all<Color>(
+              disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey
+            ),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              EdgeInsets.all(8.0)
+            ),
+            overlayColor: MaterialStateProperty.all<Color>(
+              Colors.grey[50]
+            )
+          )
         ),
       ),
     );
@@ -74,16 +114,40 @@ class CommandButton extends StatelessWidget {
 
 /// Class used to generate the shortcut button
 class ShortcutButton extends StatelessWidget {
+  /// Widget for title
   final Widget title;
+
+  /// Widget for badge
   final Widget badge;
+
+  /// String for tooltip
   final String tooltip;
+
+  /// Function to handle on tap
   final Function() onTap;
+
+  /// Function to handle on long tap
   final Function() onLongTap;
+
+  /// Boolean to disabled the button
   final bool disabled;
+
+  /// Double value to indicate button width and height
   final double size;
+
+  /// Double value to indicate elevation
+  final double elevation;
+
+  /// Color to indicate button background color
   final Color backgroundColor;
+
+  /// Color to indicate button border color
   final Color borderColor;
+
+  /// Double value to indicate button corner radius
   final double radius;
+
+  /// Widget for icon
   final Widget icon;
 
   const ShortcutButton(
@@ -95,6 +159,7 @@ class ShortcutButton extends StatelessWidget {
       this.tooltip,
       this.disabled = false,
       this.size,
+      this.elevation = 0,
       this.backgroundColor,
       this.borderColor,
       this.radius = 5.0,
@@ -106,7 +171,7 @@ class ShortcutButton extends StatelessWidget {
     return SizedBox(
       width: this.size ?? 150,
       height: this.size ?? 150,
-      child: RaisedButton(
+      child: ElevatedButton(
         child: Tooltip(
             message: this.tooltip ?? '',
             child: Stack(
@@ -133,14 +198,26 @@ class ShortcutButton extends StatelessWidget {
             )),
         onPressed: disabled ? null : this.onTap,
         onLongPress: this.onLongTap,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 0),
-            side: BorderSide(
-                color:
-                    disabled ? Colors.grey[300] : borderColor ?? Colors.grey)),
-        color: disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey,
-        padding: const EdgeInsets.all(8.0),
-        highlightColor: Colors.grey[50],
+        style: ButtonStyle(
+          side: MaterialStateProperty.all<BorderSide>(
+            BorderSide( color: disabled ? Colors.grey[300]
+                  : borderColor ?? Colors.grey)
+          ),
+          elevation: MaterialStateProperty.all<double>(this.elevation),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius ?? 0)),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey
+          ),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            EdgeInsets.all(8.0)
+          ),
+          overlayColor: MaterialStateProperty.all<Color>(
+            Colors.grey[50]
+          )
+        )
       ),
     );
   }
