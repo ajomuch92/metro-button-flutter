@@ -3,5 +3,12 @@
     "activityBar.background": "#4B1947",
     "titleBar.activeBackground": "#6A2463",
     "titleBar.activeForeground": "#FDF8FC"
+  },
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
   }
 }

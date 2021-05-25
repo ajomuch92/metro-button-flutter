@@ -5,49 +5,49 @@ import 'package:flutter/material.dart';
 /// Class used to generate the command button
 class CommandButton extends StatelessWidget {
   /// Widget for title
-  final Widget title;
+  final Widget? title;
 
   /// Widget for subtitle
-  final Widget subtitle;
+  final Widget? subtitle;
 
   /// String for tooltip
-  final String tooltip;
+  final String? tooltip;
 
   /// Function to handle on tap
-  final Function() onTap;
+  final Function()? onTap;
 
   /// Function to handle on long tap
-  final Function() onLongTap;
+  final Function()? onLongTap;
 
   /// Boolean to disabled the button
-  final bool disabled;
+  final bool? disabled;
 
   /// Boolean value to indicate when icon is used as leading or trailing
-  final bool reverse;
+  final bool? reverse;
 
   /// Double value to indicate button width
-  final double width;
+  final double? width;
 
   /// Double value to indicate button height
-  final double height;
+  final double? height;
 
   /// Double value to indicate elevation
-  final double elevation;
+  final double? elevation;
 
   /// Color to indicate button background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Color to indicate button border color
-  final Color borderColor;
+  final Color? borderColor;
 
   /// Double value to indicate button corner radius
-  final double radius;
+  final double? radius;
 
   /// Widget for icon
-  final Widget icon;
+  final Widget? icon;
 
   const CommandButton(
-      {Key key,
+      {Key? key,
       @required this.title,
       @required this.onTap,
       this.onLongTap,
@@ -66,6 +66,8 @@ class CommandButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color? _baseColor =
+        disabled! ? Colors.grey[300] : borderColor ?? Colors.grey;
     return SizedBox(
       width: this.width ?? MediaQuery.of(context).size.width * 0.9,
       child: ButtonTheme(
@@ -73,7 +75,7 @@ class CommandButton extends StatelessWidget {
         child: ElevatedButton(
             child: Tooltip(
                 message: this.tooltip ?? '',
-                child: this.reverse
+                child: this.reverse!
                     ? ListTile(
                         title: this.title,
                         subtitle: this.subtitle,
@@ -84,25 +86,21 @@ class CommandButton extends StatelessWidget {
                         subtitle: this.subtitle,
                         leading: this.icon,
                       )),
-            onPressed: disabled ? null : this.onTap,
+            onPressed: disabled! ? null : this.onTap,
             onLongPress: this.onLongTap,
             style: ButtonStyle(
-                side: MaterialStateProperty.all<BorderSide>(BorderSide(
-                    color: disabled
-                        ? Colors.grey[300]
-                        : borderColor ?? Colors.grey)),
-                elevation: MaterialStateProperty.all<double>(this.elevation),
+                side: MaterialStateProperty.all<BorderSide>(
+                    BorderSide(color: _baseColor!)),
+                elevation: MaterialStateProperty.all<double>(this.elevation!),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(radius ?? 0)),
                 ),
-                backgroundColor: MaterialStateProperty.all<Color>(disabled
-                    ? Colors.grey[300]
-                    : backgroundColor ?? Colors.grey),
+                backgroundColor: MaterialStateProperty.all<Color>(_baseColor),
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                     EdgeInsets.all(8.0)),
                 overlayColor:
-                    MaterialStateProperty.all<Color>(Colors.grey[50]))),
+                    MaterialStateProperty.all<Color>(Colors.grey[50]!))),
       ),
     );
   }
@@ -111,43 +109,43 @@ class CommandButton extends StatelessWidget {
 /// Class used to generate the shortcut button
 class ShortcutButton extends StatelessWidget {
   /// Widget for title
-  final Widget title;
+  final Widget? title;
 
   /// Widget for badge
-  final Widget badge;
+  final Widget? badge;
 
   /// String for tooltip
-  final String tooltip;
+  final String? tooltip;
 
   /// Function to handle on tap
-  final Function() onTap;
+  final Function()? onTap;
 
   /// Function to handle on long tap
-  final Function() onLongTap;
+  final Function()? onLongTap;
 
   /// Boolean to disabled the button
-  final bool disabled;
+  final bool? disabled;
 
   /// Double value to indicate button width and height
-  final double size;
+  final double? size;
 
   /// Double value to indicate elevation
-  final double elevation;
+  final double? elevation;
 
   /// Color to indicate button background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Color to indicate button border color
-  final Color borderColor;
+  final Color? borderColor;
 
   /// Double value to indicate button corner radius
-  final double radius;
+  final double? radius;
 
   /// Widget for icon
-  final Widget icon;
+  final Widget? icon;
 
   const ShortcutButton(
-      {Key key,
+      {Key? key,
       @required this.title,
       @required this.onTap,
       this.onLongTap,
@@ -164,6 +162,10 @@ class ShortcutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color? _baseColor =
+        disabled! ? Colors.grey[300] : borderColor ?? Colors.grey;
+    Color? _backgroundColor =
+        disabled! ? Colors.grey[300] : backgroundColor ?? Colors.grey;
     return SizedBox(
       width: this.size ?? 150,
       height: this.size ?? 150,
@@ -175,7 +177,7 @@ class ShortcutButton extends StatelessWidget {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [this.icon, this.title],
+                      children: [this.icon!, this.title!],
                     ),
                   ),
                   Positioned(
@@ -192,23 +194,22 @@ class ShortcutButton extends StatelessWidget {
                           : Container()),
                 ],
               )),
-          onPressed: disabled ? null : this.onTap,
+          onPressed: disabled! ? null : this.onTap,
           onLongPress: this.onLongTap,
           style: ButtonStyle(
-              side: MaterialStateProperty.all<BorderSide>(BorderSide(
-                  color: disabled
-                      ? Colors.grey[300]
-                      : borderColor ?? Colors.grey)),
-              elevation: MaterialStateProperty.all<double>(this.elevation),
+              side: MaterialStateProperty.all<BorderSide>(
+                  BorderSide(color: _baseColor!)),
+              elevation: MaterialStateProperty.all<double>(this.elevation!),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(radius ?? 0)),
               ),
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  disabled ? Colors.grey[300] : backgroundColor ?? Colors.grey),
+              backgroundColor:
+                  MaterialStateProperty.all<Color>(_backgroundColor!),
               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                   EdgeInsets.all(8.0)),
-              overlayColor: MaterialStateProperty.all<Color>(Colors.grey[50]))),
+              overlayColor:
+                  MaterialStateProperty.all<Color>(Colors.grey[50]!))),
     );
   }
 }

@@ -1,10 +1,10 @@
 name: metro_button
 description: Package to create two types of stylized buttons like Metro UI.
-version: 0.1.1
+version: 0.2.0
 homepage: https://github.com/ajomuch92/metro-button-flutter
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
